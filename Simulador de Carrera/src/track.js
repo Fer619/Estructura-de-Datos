@@ -23,11 +23,10 @@ class runningTrack{
             else if(this.runnerB > track && this.runnerA < track) {
                 console.log("El ganador es el corredor B");
             }
+            else false;
             
         }
     }
 
-    firstRunner(runnerA) {
-
-    }
+   
 }
