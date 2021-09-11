@@ -1,6 +1,7 @@
 export default class Players {
-    constructor(position){ 
+    constructor(id){ 
     this.position = new Array;
+    this.id = id;
 
     }
 
@@ -8,6 +9,8 @@ export default class Players {
        position= 0;
        this.position += position.lanzar();
    }
+
+
     
     
 }
