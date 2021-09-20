@@ -23,8 +23,6 @@ export default class Product {
         return this.cost;
     }
 
-    getValue() {
-        return this.quantity * this.cost;
-    }
-    
+ 
+
 }
