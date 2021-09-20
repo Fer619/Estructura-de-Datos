@@ -2,9 +2,10 @@ import Players from "./players.js";
 import Dice from "./dice.js";
 export default class Board {
 
-constructor(ladders, snakes) {
+constructor(ladders, snakes, board) {
     this.ladders = ladders;
     this.snakes = snakes;
+    this.board = board;
 }
 
 ladders(){
@@ -46,6 +47,9 @@ ladders(){
         }    
                     
 }
+
+
+
 
 
 }
