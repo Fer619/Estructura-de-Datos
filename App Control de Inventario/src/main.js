@@ -1,5 +1,5 @@
 import Product from "./product.js";
-import RegistryStorage from "./RegistryStorage.js";
+import registryStorage from "./registryStorage.js";
 
 class App {
     constructor() {
@@ -32,3 +32,5 @@ class App {
 
     }
 }
+
+new App();
