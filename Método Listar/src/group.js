@@ -70,7 +70,24 @@ class Group {
         if(!this.head){
             return null
         } if(this.head.id == id) {
-
+            elim = this.head;
+            this.head = this.head.next;
+            return elim;
+        } else {
+            let prev = this.head;
+            let nex = this.head.next;
+            while(nex != null) {
+                if(nex.id == id) {
+                    prev.next = prev.next.next;
+                    elim = nex;
+                    elim.next = null;
+                    return elim;
+                } else {
+                    prev = nex;
+                    nex = nex.next;
+                }
+            }
+            return null;
         }
     }
     
@@ -78,3 +95,32 @@ class Group {
 
 
 }
+
+
+let g3 = new Group();
+let p1 = new People(19, 'Fernando');
+g3.add(p1);
+p1 = new People(20, 'Luis');
+g3.add(p1);
+p1 = new People(21, 'Lopez');
+g3.add(p1);
+p1 = new People(22, 'Ana');
+g3.add(p1);
+p1 = new People(23, 'Ramon');
+
+console.log(g3.toList());
+
+let f = g3.find(79);
+if(f==null){
+    console.log('No existe el id ingresado');
+} else { 
+    console.log(f.showInfo());
+}
+
+let d = g3.delete(21);
+if(d == null){
+    console.log('No existe el id ingresado')
+    } else {
+        console.log('Se elimino' + d.showInfo());
+    }
+
