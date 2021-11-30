@@ -78,7 +78,73 @@ export default class Lista {
             return null;
 
         }
-    }   
+    }  
+    
+    
+    listar() {
+        let txt='';
+        let base=this.inicio;
+
+        if(!base){
+            txt= 'No hay ninguna base registrada.';
+            return txt;
+        } else{
+            do{
+                txt += base.info() + '\n' + '------------------------------';
+                base=base.next;
+            }while(base != this.inicio);
+        }
+        return txt;
+    }
+
+    createCard(base, hour, minutes) {
+        let card = '';
+        let minHour = 0;
+        let find = this._search(base);
+    
+
+    if(!find) {
+        return null;;
+    } else {
+        while(minutes >= 0) {
+            card += find.cardInfo(this._getHour(hour, minHour), minutes) + '\n' + '------------------------------';
+            minHour += find.next.getMinutes();
+            minutes -= find.next.getMinutes();
+            find = find.next;
+        }
+        return card;
+    }
+}
+
+_search(nameBase) {
+    let base = this.start;
+
+    if(!base) {
+        return null;
+    }
+
+    do {
+        if(base.getName() === nameBase) {
+            return base;
+        } else {
+            base = base.next;
+        }
+    } while(base !== this.start);
+    return null;
+}
+
+_getHour(hour, minutes) {
+    let hourToMinutes = ((hour * 60) + minutes)/60;
+    let totalHours = Math.trunc(hourToMinutes);
+    let lessMinutes = Math.round((hourToMinutes - totalHours)*60);
+
+    if(lessMinutes < 10) {
+        return '${totalHours}:0${lessMinutes}';
+    } else {
+        return '${totalHours}:${lessMinutes}';
+    }
+}
+
 
    
 
